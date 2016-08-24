@@ -1,0 +1,37 @@
+<html>
+<body>
+    <h1>Create Menu Item</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li><strong>{{ message }}</strong></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action= "/restaurant/{{restaurant.id}}/menu/new" method = 'POST'>
+        <div>
+            <input type = 'text' size='30' name='name' placeholder = 'Name'>
+        </div>
+        <div>
+            <select name="course">
+                <option>Entree</option>
+                <option>Appetizer</option>
+                <option>Beverage</option>
+                <option>Dessert</option>
+            </select>
+        </div>
+        <div>
+            <input type = 'text' size='30' name = 'price' placeholder = 'Price'>
+        </div>
+        <div>
+            <textarea style="width: 200px; height:80px;" name="description" placeholder="Description"></textarea>
+        </div>
+        <div>
+            <input type='submit' value='Create'>
+        </div>
+    </form>
+    <a href= '/'>Cancel</a>
+</body>
+</html>

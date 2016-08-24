@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurants</title>
+</head>
+<body>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li><strong>{{ message }}</strong></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <h1 style="color: red">Restaurants</h1>
+    <a href="/restaurant/new">Make a New Restaurant</a>
+
+    {% for r in restaurants %}
+        <div>
+            {{r.name}}
+            <a href="/restaurant/{{r.id}}/edit">Edit</a>
+            <a href="/restaurant/{{r.id}}/delete">Delete</a>
+            <a href="/restaurant/{{r.id}}/menu">Menu</a>
+        </div>
+    {% endfor %}
+</body>
+</html>
